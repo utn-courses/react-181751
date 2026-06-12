@@ -1,0 +1,19 @@
+body {
+  background-color: yellowgreen;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: beige;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(199, 199, 190);
+}
