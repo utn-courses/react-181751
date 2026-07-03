@@ -1,4 +1,4 @@
-const Film = (movie) => {
+const Film = ({ movie }) => {
   const { id, title, year, genre, rating } = movie
   return (
     <div className="card">

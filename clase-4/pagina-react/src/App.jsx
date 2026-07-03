@@ -9,7 +9,9 @@ const App = () => {
       <Header />
       <main>
         {
-          movies.map((movie) => <Film movie={movie} />)
+          movies.map((movie) => {
+            return <Film movie={movie} />
+          })
         }
       </main>
       <Footer />
