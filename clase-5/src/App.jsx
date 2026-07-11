@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useMemo } from "react"
 
 import { Header } from "./components/Header.jsx"
 import { movies } from "./data/mock.js"
@@ -8,30 +8,58 @@ import { Form } from "./components/Form.jsx"
 
 const App = () => {
   const [showForm, setShowForm] = useState(false)
-  const [listFilms, setListFilms] = useState(movies)
+  const [listFilms, setListFilms] = useState(JSON.parse(localStorage.getItem("movies")) || movies)
+  const [search, setSearch] = useState("")
 
   const handleClick = () => {
     setShowForm(!showForm)
   }
 
   const addFilm = (dataFilm) => {
-    console.log("Pelicula recibida", dataFilm)
     setListFilms([{ id: listFilms.length + 1, ...dataFilm }, ...listFilms])
   }
+
+  const toggleFavorite = (id) => {
+    setListFilms(listFilms.map(movie => movie.id === id
+      ? { ...movie, favorite: !movie.favorite }
+      : movie
+    ))
+  }
+
+  // Despues de que se renderice el componente voy a ejecutar una función con un efecto secundario que no está relacionado con la visual
+  useEffect(() => {
+    localStorage.setItem("movies", JSON.stringify(listFilms))
+  }, [listFilms])
+
+  useEffect(() => {
+    document.title = `Peliculas totales: ${listFilms.length}`
+  }, [listFilms])
+
+  const filteredFilms = useMemo(() => {
+    return listFilms.filter(movie => movie.title.includes(search))
+  }, [search, listFilms])
 
   return (
     <section>
       <Header />
       <div className="actions">
         <button onClick={handleClick}>Mostrar Formulario</button>
+
+        <input
+          className="search"
+          type="text"
+          placeholder="Buscar pelicula..."
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
         {
           showForm && <Form addFilm={addFilm} />
         }
       </div>
       <main>
         {
-          listFilms.map((movie) => {
-            return <Film movie={movie} />
+          filteredFilms.map((movie) => {
+            return <Film key={movie.id} movie={movie} toggleFavorite={toggleFavorite} />
           })
         }
       </main>

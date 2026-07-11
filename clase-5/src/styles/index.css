@@ -72,3 +72,13 @@ form button {
   width: 80%;
   margin: 30px auto 0;
 }
+
+.search {
+  padding: 10px;
+  font-size: 16px;
+  display: block;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  width: 100%;
+}

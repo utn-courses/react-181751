@@ -1,15 +1,26 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 
 const Form = (props) => {
   const [title, setTitle] = useState("")
-  const [year, setYear] = useState(0)
+  const [year, setYear] = useState("")
   const [genre, setGenre] = useState("")
-  const [rating, setRating] = useState(0)
+  const [rating, setRating] = useState("")
+
+  const inputTitleFilm = useRef(null)
+
+  useEffect(() => {
+    inputTitleFilm.current.focus()
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    props.addFilm({ title: title, year: year, genre: genre, rating: rating })
+    props.addFilm({ title: title, year: Number(year), genre: genre, rating: Number(rating) })
+    setYear("")
+    setGenre("")
+    setRating("")
+    setTitle("")
+    inputTitleFilm.current.focus()
   }
 
   const handleTitle = (e) => {
@@ -36,6 +47,7 @@ const Form = (props) => {
         placeholder="Ingrese el título"
         onChange={(e) => handleTitle(e)}
         value={title}
+        ref={inputTitleFilm}
       />
 
       <input

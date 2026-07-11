@@ -4,6 +4,7 @@ const movies = [
     title: "Interstellar",
     year: 2014,
     genre: "Ciencia Ficción",
+    favorite: false,
     rating: 5
   },
   {
@@ -11,6 +12,7 @@ const movies = [
     title: "The Dark Knight",
     year: 2008,
     genre: "Acción",
+    favorite: true,
     rating: 5
   },
   {
@@ -18,6 +20,7 @@ const movies = [
     title: "Toy Story",
     year: 1995,
     genre: "Animación",
+    favorite: false,
     rating: 4
   }
 ]
