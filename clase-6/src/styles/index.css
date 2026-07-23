@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f4;
+}
+
+header,
+footer {
+  text-align: center;
+  padding: 20px;
+  background: white;
+}
+
+main {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ddd;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #1976d2;
+  color: white;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #1565c0;
+}
+
+/* ---------- FORMULARIO ---------- */
+
+form.card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+form button {
+  align-self: flex-start;
+}
+
+/* ---------- BOTÓN PARA MOSTRAR EL FORM ---------- */
+
+.actions {
+  width: 80%;
+  margin: 30px auto 0;
+}
+
+.search {
+  padding: 10px;
+  font-size: 16px;
+  display: block;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  width: 100%;
+}
